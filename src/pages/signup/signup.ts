@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 import { EmailValidator } from '../../validators/email';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -18,15 +19,17 @@ import { EmailValidator } from '../../validators/email';
 export class SignupPage {
   public signupForm:FormGroup;
   public loading:Loading;
+  public registeredUserProfiles: FirebaseListObservable<any>;
 
   constructor(public nav: NavController, public authData: AuthProvider, 
     public formBuilder: FormBuilder, public loadingCtrl: LoadingController, 
-    public alertCtrl: AlertController) {
+    public alertCtrl: AlertController, public af: AngularFireDatabase) {
 
     this.signupForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
     });
+    this.registeredUserProfiles = af.list('/registeredUsers');
   }
 
   /**
@@ -41,7 +44,12 @@ export class SignupPage {
     } else {
       this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password)
       .then(() => {
-        this.nav.setRoot(HomePage);
+        //this.registeredUserProfiles = af.database.list('/registeredUsers');
+        this.registeredUserProfiles.push({
+            email: this.signupForm.value.email
+          });
+          //this.nav.setRoot(HomePage);
+        
       }, (error) => {
         this.loading.dismiss().then( () => {
           var errorMessage: string = error.message;
@@ -62,6 +70,7 @@ export class SignupPage {
         dismissOnPageChange: true,
       });
       this.loading.present();
+
     }
   }
 }

@@ -35,6 +35,18 @@
       Login
     </button>
 
+    <button ion-button block color="danger" (click)="loginUserWithGoogle()" >
+      <ion-icon name="logo-googleplus"></ion-icon>
+      Login with Google
+    </button>
+
+    <ion-item *ngIf="userProfile">
+      <ion-avatar item-left>
+        <img [src]="userProfile.photoURL">
+      </ion-avatar>
+      <h2>{{ userProfile.displayName }}</h2>
+      <h3>{{ userProfile.email }}</h3>
+    </ion-item>
   </form>
 
   <button ion-button block clear (click)="goToResetPassword()">

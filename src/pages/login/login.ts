@@ -10,7 +10,7 @@ import {
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '../../validators/email';
-
+import { GooglePlus } from '@ionic-native/google-plus';
 
 import firebase from 'firebase';
 
@@ -28,14 +28,23 @@ export class LoginPage {
 
     constructor(public navCtrl: NavController, public authData: AuthProvider, 
       public formBuilder: FormBuilder, public alertCtrl: AlertController,
-      public loadingCtrl: LoadingController) {
+      public loadingCtrl: LoadingController, private googlePlus: GooglePlus) {
 
         this.loginForm = formBuilder.group({
           email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
           password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
         });
 
-        
+        this.zone = new NgZone({});
+        firebase.auth().onAuthStateChanged( user => {
+          this.zone.run( () => {
+            if (user){
+              this.userProfile = user;
+            } else { 
+              this.userProfile = null; 
+            }
+          });
+        });
       
     }
 
@@ -75,5 +84,23 @@ export class LoginPage {
     createAccount(){
       this.navCtrl.push('SignupPage');
     }
+
+  loginUserWithGoogle(): void {
+    
+
+      this.googlePlus.login({
+        'webClientId': '1019366618900-8l2sm0dqgnusg1slnrjdlnmbqe3ggntn.apps.googleusercontent.com',
+        'offline': true
+      }).then( res => {
+        firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken))
+          .then( success => {
+            console.log("Firebase success: " + JSON.stringify(success));
+            this.navCtrl.setRoot('HomePage');
+          })
+          .catch( error => console.log("Firebase failure: " + JSON.stringify(error)));
+        }).catch(err => console.log("Error: ", err));
+  }
+
+  
 
 }

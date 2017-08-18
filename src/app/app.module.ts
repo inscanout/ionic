@@ -8,14 +8,27 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { AuthProvider } from '../providers/auth/auth';
 import { HomePage } from '../pages/home/home';
+import { GooglePlus } from '@ionic-native/google-plus';
+
 
 
 // Importing AF2 Module
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 // AF2 Settings
+const firebaseConfig2 = {
+
+    apiKey: "AIzaSyBrJuCOihScJhi1AYqbGLydMRiOZkyq1VI",
+    authDomain: "demoapp-4ea42.firebaseapp.com",
+    databaseURL: "https://demoapp-4ea42.firebaseio.com",
+    projectId: "demoapp-4ea42",
+    storageBucket: "demoapp-4ea42.appspot.com",
+    messagingSenderId: "680611620102"
+};
+
 const firebaseConfig = {
   apiKey: "AIzaSyCNJRN9IPYIpSQpOUjewiT5XdTWhzcq4Hk",
     authDomain: "testappfirebase-80777.firebaseapp.com",
@@ -33,7 +46,8 @@ const firebaseConfig = {
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,7 +58,8 @@ const firebaseConfig = {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SplashScreen,
     StatusBar, 
-    AuthProvider
+    AuthProvider,
+    GooglePlus
   ]
 })
 export class AppModule {}
