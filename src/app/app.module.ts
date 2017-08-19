@@ -19,15 +19,15 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 // AF2 Settings
-const firebaseConfig2 = {
+// const firebaseConfig2 = {
 
-    apiKey: "AIzaSyBrJuCOihScJhi1AYqbGLydMRiOZkyq1VI",
-    authDomain: "demoapp-4ea42.firebaseapp.com",
-    databaseURL: "https://demoapp-4ea42.firebaseio.com",
-    projectId: "demoapp-4ea42",
-    storageBucket: "demoapp-4ea42.appspot.com",
-    messagingSenderId: "680611620102"
-};
+//     apiKey: "AIzaSyBrJuCOihScJhi1AYqbGLydMRiOZkyq1VI",
+//     authDomain: "demoapp-4ea42.firebaseapp.com",
+//     databaseURL: "https://demoapp-4ea42.firebaseio.com",
+//     projectId: "demoapp-4ea42",
+//     storageBucket: "demoapp-4ea42.appspot.com",
+//     messagingSenderId: "680611620102"
+// };
 
 const firebaseConfig = {
   apiKey: "AIzaSyCNJRN9IPYIpSQpOUjewiT5XdTWhzcq4Hk",

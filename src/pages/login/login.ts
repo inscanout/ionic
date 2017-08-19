@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '../../validators/email';
 import { GooglePlus } from '@ionic-native/google-plus';
+import { HomePage } from '../home/home';
 
 import firebase from 'firebase';
 
@@ -52,9 +53,17 @@ export class LoginPage {
       if (!this.loginForm.valid){
         console.log(this.loginForm.value);
       } else {
+
+        this.loading = this.loadingCtrl.create({
+          dismissOnPageChange: true,
+        });
+        this.loading.present();
+
         this.authData.loginUser(this.loginForm.value.email, this.loginForm.value.password)
         .then( authData => {
-          this.navCtrl.setRoot('HomePage');
+          this.loading.dismiss().then( () => {
+            this.navCtrl.setRoot(HomePage);
+          });
         }, error => {
           this.loading.dismiss().then( () => {
             let alert = this.alertCtrl.create({
@@ -70,10 +79,7 @@ export class LoginPage {
           });
         });
 
-        this.loading = this.loadingCtrl.create({
-          dismissOnPageChange: true,
-        });
-        this.loading.present();
+        
       }
     }
 
@@ -85,8 +91,12 @@ export class LoginPage {
       this.navCtrl.push('SignupPage');
     }
 
-  loginUserWithGoogle(): void {
-    
+    loginUserWithGoogle(): void {
+      
+      this.loading = this.loadingCtrl.create({
+        dismissOnPageChange: true,
+      });
+      this.loading.present();
 
       this.googlePlus.login({
         'webClientId': '1019366618900-8l2sm0dqgnusg1slnrjdlnmbqe3ggntn.apps.googleusercontent.com',
@@ -95,11 +105,42 @@ export class LoginPage {
         firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken))
           .then( success => {
             console.log("Firebase success: " + JSON.stringify(success));
-            this.navCtrl.setRoot('HomePage');
+            
+            this.loading.dismiss().then( () => {
+              this.navCtrl.setRoot(HomePage);
+            });
           })
-          .catch( error => console.log("Firebase failure: " + JSON.stringify(error)));
-        }).catch(err => console.log("Error: ", err));
-  }
+          .catch( error => {
+            this.loading.dismiss().then( () => {
+              let alert = this.alertCtrl.create({
+                message: error.message,
+                buttons: [
+                  {
+                    text: "Ok",
+                    role: 'cancel'
+                  }
+                ]
+              });
+              alert.present();
+            });
+            console.log("Firebase failure: " + JSON.stringify(error));
+          });
+        }).catch(err => {
+          this.loading.dismiss().then( () => {
+            let alert = this.alertCtrl.create({
+              message: err.message,
+              buttons: [
+                {
+                  text: "Ok",
+                  role: 'cancel'
+                }
+              ]
+            });
+            alert.present();
+          });
+          console.log("Error: ", err)}
+        );
+    }
 
   
 

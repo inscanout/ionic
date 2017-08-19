@@ -27,7 +27,8 @@ export class SignupPage {
 
     this.signupForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
-      password: ['', Validators.compose([Validators.minLength(6), Validators.required])]
+      password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
+      phone: ['', Validators.compose([Validators.required, Validators.pattern('^[\+0-9]{10,12}$')])]
     });
     this.registeredUserProfiles = af.list('/registeredUsers');
   }
@@ -42,18 +43,38 @@ export class SignupPage {
     if (!this.signupForm.valid){
       console.log(this.signupForm.value);
     } else {
+      this.loading = this.loadingCtrl.create({
+          dismissOnPageChange: true,
+        });
+      this.loading.present();
+
       this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password)
       .then(() => {
         //this.registeredUserProfiles = af.database.list('/registeredUsers');
-        this.registeredUserProfiles.push({
-            email: this.signupForm.value.email
+        this.loading.dismiss().then( () => {
+          var successMessage: string = "User added successfully";
+          var alert = this.alertCtrl.create({
+              message: successMessage,
+              buttons: [
+                {
+                  text: "Ok",
+                  role: 'cancel'
+                }
+              ]
+            });
+          alert.present();
+          this.registeredUserProfiles.push({
+            email: this.signupForm.value.email,
+            phone: this.signupForm.value.phone
           });
-          //this.nav.setRoot(HomePage);
+          this.nav.setRoot(HomePage); //ReviewView issue
+        });
+        
         
       }, (error) => {
         this.loading.dismiss().then( () => {
           var errorMessage: string = error.message;
-            let alert = this.alertCtrl.create({
+          var alert = this.alertCtrl.create({
               message: errorMessage,
               buttons: [
                 {
@@ -66,10 +87,7 @@ export class SignupPage {
         });
       });
 
-      this.loading = this.loadingCtrl.create({
-        dismissOnPageChange: true,
-      });
-      this.loading.present();
+      
 
     }
   }
