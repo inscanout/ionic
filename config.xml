@@ -31,6 +31,10 @@
     <engine name="android" spec="^6.2.3" />
     <plugin name="cordova-plugin-console" spec="^1.0.5" />
     <plugin name="cordova-plugin-device" spec="^1.1.4" />
+    <plugin name="cordova-plugin-facebook4" spec="^1.9.1">
+        <variable name="APP_ID" value="131635584116978" />
+        <variable name="APP_NAME" value="Test\ App\ Firebase" />
+    </plugin>
     <plugin name="cordova-plugin-googleplus" spec="^5.1.1">
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.1019366618900-8l2sm0dqgnusg1slnrjdlnmbqe3ggntn" />
     </plugin>

@@ -9,6 +9,7 @@
 <ion-content padding>
   <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
 
+<!-- Email auth -->
     <ion-item>
       <ion-label stacked>Email</ion-label>
       <ion-input #email formControlName="email" type="email" placeholder="Your email address"
@@ -35,6 +36,7 @@
       Login
     </button>
 
+<!-- Google auth -->
     <button ion-button block color="danger" (click)="loginUserWithGoogle()" >
       <ion-icon name="logo-googleplus"></ion-icon>
       Login with Google
@@ -47,6 +49,25 @@
       <h2>{{ userProfile.displayName }}</h2>
       <h3>{{ userProfile.email }}</h3>
     </ion-item>
+
+
+<!-- Fb auth -->
+    <button ion-button center (click)="facebookLogin()">
+      Log In with Facebook
+    </button>
+
+    <ion-card *ngIf="userProfileFb">
+      <img [src]="userProfileFb.photoURL"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{ userProfileFb.displayName }}
+        </ion-card-title>
+        <p>
+          The UID for this new user is {{userProfileFb.uid}} and the email is {{userProfileFb.email}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
   </form>
 
   <button ion-button block clear (click)="goToResetPassword()">

@@ -9,7 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { AuthProvider } from '../providers/auth/auth';
 import { HomePage } from '../pages/home/home';
 import { GooglePlus } from '@ionic-native/google-plus';
-
+import { Facebook } from '@ionic-native/facebook'
 
 
 // Importing AF2 Module
@@ -59,7 +59,8 @@ const firebaseConfig = {
     SplashScreen,
     StatusBar, 
     AuthProvider,
-    GooglePlus
+    GooglePlus,
+    Facebook
   ]
 })
 export class AppModule {}

@@ -17,6 +17,7 @@
         "@angular/platform-browser": "4.0.2",
         "@angular/platform-browser-dynamic": "4.0.2",
         "@ionic-native/core": "^4.1.0",
+        "@ionic-native/facebook": "^4.1.0",
         "@ionic-native/google-plus": "^4.1.0",
         "@ionic-native/splash-screen": "3.4.2",
         "@ionic-native/status-bar": "3.4.2",
@@ -25,6 +26,7 @@
         "cordova-android": "^6.2.3",
         "cordova-plugin-console": "^1.0.5",
         "cordova-plugin-device": "^1.1.4",
+        "cordova-plugin-facebook4": "^1.9.1",
         "cordova-plugin-googleplus": "^5.1.1",
         "cordova-plugin-splashscreen": "^4.0.3",
         "cordova-plugin-statusbar": "^2.2.1",
@@ -64,6 +66,10 @@
             "ionic-plugin-keyboard": {},
             "cordova-plugin-googleplus": {
                 "REVERSED_CLIENT_ID": "com.googleusercontent.apps.1019366618900-8l2sm0dqgnusg1slnrjdlnmbqe3ggntn"
+            },
+            "cordova-plugin-facebook4": {
+                "APP_ID": "131635584116978",
+                "APP_NAME": "Test\\ App\\ Firebase"
             }
         },
         "platforms": [
