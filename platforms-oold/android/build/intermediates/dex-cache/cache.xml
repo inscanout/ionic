@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/11.0.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="70ffe00aaf049893f59d1dad57bd82992faa38ef">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-base-11.0.4_5c22d7c0badd2701ea0defeca6fcd173597f04d4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.3.1_2e27083c44281082c6668cfb53e2c9a58fed4b9d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth-base/11.0.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="0bffdc0bd4f7ca0e27c5bfeef39569f8da00aa26">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-auth-base-11.0.4_133d6554a35ae9fb703ab39de92025015c82897e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.25.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="474cccf169297d49fff89fd35b7634a7a9d1031c">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.facebook.android-facebook-android-sdk-4.25.0_a763a4437d5fe1c46919d8461bf61a79202b1412.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.3.1_66ffe775b438d159f6ed29f6d3963a96481d0b3b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.3.1_d14754d553c09955b147e81b339d18aeebbc3a15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_df028ed79963ee3d0413e6e636b7b43d1afa0541.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.3.1_756b2fb657a668664847092d424ca7fb19e529a6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.android.support/support-v4/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.3.1_4418629866b6d30c477a2d7bbabb0b76dd29177c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/11.0.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="364364bf77b4a71afc5930fc3ae57b3f0eea637c">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-basement-11.0.4_996d4965bbf534183d0847420ab2988dcb99e6da.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/support-annotations-25.3.1_ffd49f521b9d3b4aace16053f931c5aa7f56d812.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.3.1_7b839cd361a9cc628bae604243daf079f4632291.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.android.support/support-fragment/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.3.1_840ca3fd23545525aac4e308fc9c5034d9e4b239.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.android.support/customtabs/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="807751a24cf96566fd8675517c94d8463cf364db">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-customtabs-25.3.1_808290840bc0ff6cae409b17f109a40e511b44a4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.android.support/support-compat/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.3.1_22fceaf92b8e4edd618f5054c7de4e215e1d65c1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.android.support/cardview-v7/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-25.3.1_14c023645eb6b1a3ef379be529055b71f6fee73d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/org.apache.cordova/CordovaLib/6.2.3/debug/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="0a51e34fd000a76908d2cf3b049a0b33e273e991">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/CordovaLib-6.2.3-debug_8d6ab8d67bee0ec9b44e054d1be7a694e2d64633.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.google.android.gms/play-services-auth/11.0.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="f5ff5e3811e8c9485fd27f9052ae4d4d23a22d9d">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-auth-11.0.4_f52bcbd6e5c9e27b206ac8679ee74ed73b374c29.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.3.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.3.1_96671cd93d22dee8d0f59871b5dae4693f206da7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/11.0.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="c8bf878c09bf0df6ae76eb6c2df38c6a186b38b7">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-identity-11.0.4_35866a1bca33cbb7dafd8bd90dd76fc8da77e930.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-applinks/1.4.0/8ad21bf21784dacce5f2043afb97218cc377e835/bolts-applinks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="8ad21bf21784dacce5f2043afb97218cc377e835">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/bolts-applinks-1.4.0_7bc41685788344bf6f6178ffc4a768ce04854e62.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/11.0.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="26.0.1"
+        sha1="2430e711762a749feb00b3d64858ca4768251b9d">
+        <dex dex="/home/anjalikrishna/projects/Freelance apps/InScanOut/platforms/android/build/intermediates/pre-dexed/debug/com.google.android.gms-play-services-tasks-11.0.4_96e1f5970518432bea79972959fa9848db49544b.jar" />
+    </item>
+
+</items>
