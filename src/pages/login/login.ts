@@ -13,6 +13,7 @@ import { EmailValidator } from '../../validators/email';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { HomePage } from '../home/home';
 import { Facebook } from '@ionic-native/facebook'
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 import firebase from 'firebase';
 
@@ -28,11 +29,13 @@ export class LoginPage {
   userProfile: any = null;
   zone: NgZone;
   userProfileFb: any = null;
+  userProfileGoogle: any = null;
+  public regUsersList: FirebaseListObservable<any>;
 
     constructor(public navCtrl: NavController, public authData: AuthProvider, 
       public formBuilder: FormBuilder, public alertCtrl: AlertController,
       public loadingCtrl: LoadingController, private googlePlus: GooglePlus, 
-      private facebook: Facebook) {
+      private facebook: Facebook, public af: AngularFireDatabase) {
 
         this.loginForm = formBuilder.group({
           email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -101,6 +104,8 @@ export class LoginPage {
       });
       this.loading.present();
 
+      this.regUsersList = this.af.list('/registeredUsers');
+
       this.googlePlus.login({
         'webClientId': '1019366618900-8l2sm0dqgnusg1slnrjdlnmbqe3ggntn.apps.googleusercontent.com',
         'offline': true
@@ -111,6 +116,17 @@ export class LoginPage {
             
             this.loading.dismiss().then( () => {
               this.navCtrl.setRoot(HomePage);
+              this.userProfileGoogle = success;
+              // this.regUsersList.subscribe(user => {
+              //   console.log(user);
+              //   //if 
+              //   console.log(success);
+                
+              // });
+              this.regUsersList.push({
+                  email: this.userProfileGoogle.email,
+                  phone: this.userProfileGoogle.phone
+                });
             });
           })
           .catch( error => {

@@ -3,7 +3,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { Geolocation } from 'ionic-native';
-
+import { Contacts } from 'ionic-native';
 
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -68,7 +68,8 @@ const firebaseConfig = {
     GooglePlus,
     Facebook, 
     ConnectivityServiceProvider,
-    Geolocation
+    Geolocation,
+    Contacts
   ]
 })
 export class AppModule {}

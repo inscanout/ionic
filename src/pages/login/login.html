@@ -42,12 +42,12 @@
       Login with Google
     </button>
 
-    <ion-item *ngIf="userProfile">
+    <ion-item *ngIf="userProfileGoogle">
       <ion-avatar item-left>
-        <img [src]="userProfile.photoURL">
+        <img [src]="userProfileGoogle.photoURL">
       </ion-avatar>
-      <h2>{{ userProfile.displayName }}</h2>
-      <h3>{{ userProfile.email }}</h3>
+      <h2>{{ userProfileGoogle.displayName }}</h2>
+      <h3>{{ userProfileGoogle.email }}</h3>
     </ion-item>
 
 
