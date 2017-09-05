@@ -19,14 +19,14 @@
 	  (ionCancel)="onCancel($event)">Search location
 	</ion-searchbar>
 	
-	<div #map id="map"></div>  
+	<!-- <div #map id="map"></div>   -->
 	
 
 	  <ion-list>
 	    <span *ngFor="let contact of contactlist" >
 	      <ion-item *ngIf="contact.displayName">
 	          {{contact.displayName}} = {{contact.phoneNumbers[0].value}}
-	          <!-- <ion-icon [hidden]="contact.showIcon" name="logo-apple"></ion-icon> -->
+	          <ion-icon [hidden]="contact.showIcon" name="logo-apple"></ion-icon>
 	      </ion-item>
 	    </span>
 	  </ion-list>
