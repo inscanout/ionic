@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      <h3></h3>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+	  <ion-list>
+	    <span *ngFor="let contact of contactList">
+	      <ion-item *ngIf="contact">
+	          {{contact.displayName}}
+	          <p padding *ngFor="let phNum of contact.phoneNumbers">{{phNum.value}}</p>
+	          <!-- <ion-icon [hidden]="contact.showIcon" name="logo-apple"></ion-icon> -->
+	          <br/>
+	          
+	      </ion-item>
+	    </span>
+	  </ion-list>
+  </ion-item>
+</ion-content>
+
+

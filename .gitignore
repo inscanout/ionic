@@ -32,7 +32,7 @@ src/**/*.js
 src/**/**/*.js
 src/**/*.js.map
 src/**/**/*.js.map
-resources/
+
 $RECYCLE.BIN/
 
 .DS_Store

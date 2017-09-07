@@ -12,12 +12,11 @@ import { AuthProvider } from '../../providers/auth/auth';
 import { EmailValidator } from '../../validators/email';
 import { GooglePlus } from '@ionic-native/google-plus';
 import { HomePage } from '../home/home';
-import { Facebook } from '@ionic-native/facebook'
+import { Facebook } from '@ionic-native/facebook';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 import firebase from 'firebase';
 
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
@@ -35,7 +34,9 @@ export class LoginPage {
     constructor(public navCtrl: NavController, public authData: AuthProvider, 
       public formBuilder: FormBuilder, public alertCtrl: AlertController,
       public loadingCtrl: LoadingController, private googlePlus: GooglePlus, 
-      private facebook: Facebook, public af: AngularFireDatabase) {
+      private facebook: Facebook,
+      public af: AngularFireDatabase
+      ) {
 
         this.loginForm = formBuilder.group({
           email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -52,7 +53,7 @@ export class LoginPage {
             }
           });
         });
-      
+       this.regUsersList = af.list('/registeredUsers');
     }
 
     loginUser(){
@@ -89,6 +90,53 @@ export class LoginPage {
       }
     }
 
+    presentPrompt(userProfile) {
+      var self = this;
+      let alert = this.alertCtrl.create({
+        title: 'User Details',
+        inputs: [
+          {
+            name: 'phoneNumber',
+            placeholder: 'Please enter phone number'
+          }
+        ],
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: data => {
+              console.log('Cancel clicked');
+            }
+          },
+          {
+            text: 'Submit',
+            handler: data => {
+              self.regUsersList.push({
+                email: userProfile.email,
+                phone: data.phoneNumber,
+                uid: userProfile.uid
+              });
+            }
+          }
+        ]
+      });
+      alert.present();
+    }
+    checkForFirstTime(userProfile) {
+      var self = this;
+      var usersRef = firebase.database().ref('registeredUsers');  
+      usersRef.orderByChild("uid").equalTo(userProfile.uid).once('value', function(snapshot) {
+        const userData = snapshot.val();
+        if (userData) {
+          //alert('user ' + userProfile.uid + ' exists!');
+        } else {
+          //alert('user ' + userProfile.uid + ' does not exist!');
+          self.presentPrompt(userProfile);
+        }
+      });
+
+    }
+    
     goToResetPassword(){
       this.navCtrl.push('ResetPasswordPage');
     }
@@ -104,29 +152,19 @@ export class LoginPage {
       });
       this.loading.present();
 
-      this.regUsersList = this.af.list('/registeredUsers');
-
       this.googlePlus.login({
         'webClientId': '1019366618900-8l2sm0dqgnusg1slnrjdlnmbqe3ggntn.apps.googleusercontent.com',
         'offline': true
       }).then( res => {
         firebase.auth().signInWithCredential(firebase.auth.GoogleAuthProvider.credential(res.idToken))
           .then( success => {
-            console.log("Firebase success: " + JSON.stringify(success));
+            //console.log("Firebase success: " + JSON.stringify(success));
             
             this.loading.dismiss().then( () => {
               this.navCtrl.setRoot(HomePage);
               this.userProfileGoogle = success;
-              // this.regUsersList.subscribe(user => {
-              //   console.log(user);
-              //   //if 
-              //   console.log(success);
-                
-              // });
-              this.regUsersList.push({
-                  email: this.userProfileGoogle.email,
-                  phone: this.userProfileGoogle.phone
-                });
+              this.checkForFirstTime(this.userProfileGoogle);
+              
             });
           })
           .catch( error => {
@@ -179,6 +217,7 @@ export class LoginPage {
                 this.navCtrl.setRoot(HomePage);
               });
               this.userProfileFb = success;
+              this.checkForFirstTime(this.userProfileFb);
           })
           .catch((error) => {
               console.log("Firebase failure: " + JSON.stringify(error));
@@ -211,6 +250,6 @@ export class LoginPage {
           alert.present();
         });
       });
-  }
+    }
 
 }

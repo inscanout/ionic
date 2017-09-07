@@ -9,27 +9,30 @@
 <ion-content padding>
   <ion-item>
     <ion-label>Stay logged in?</ion-label>
-    <ion-radio value="isLoggedIn" checked="isLoggedIn"></ion-radio>
+    <ion-toggle [(ngModel)]="isLoggedIn" checked="isLoggedIn"></ion-toggle>
   </ion-item>
-  <ion-item>
-    <ion-searchbar #searcBar id="searchBar"
+  <br/>
+  <button ion-button *ngIf="!isLoggedIn" color="dark" (click)="signOut()">Logout</button>
+ 
+  <!-- <ion-item> -->
+    <!-- <ion-searchbar #searcBar id="searchBar"
 	  [(ngModel)]="searchAddress"
 	  [showCancelButton]="shouldShowCancel"
 	  (ionInput)="searchLocation($event)"
 	  (ionCancel)="onCancel($event)">Search location
-	</ion-searchbar>
+	</ion-searchbar> -->
 	
 	<!-- <div #map id="map"></div>   -->
 	
 
-	  <ion-list>
+	  <!-- <ion-list>
 	    <span *ngFor="let contact of contactlist" >
 	      <ion-item *ngIf="contact.displayName">
 	          {{contact.displayName}} = {{contact.phoneNumbers[0].value}}
 	          <ion-icon [hidden]="contact.showIcon" name="logo-apple"></ion-icon>
 	      </ion-item>
 	    </span>
-	  </ion-list>
+	  </ion-list> -->
 	
-  </ion-item>
+  <!-- </ion-item> -->
 </ion-content>
