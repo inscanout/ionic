@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Contacts } from 'ionic-native';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import firebase from 'firebase';
+
 /**
  * Generated class for the ContactsPage page.
  *
@@ -15,20 +17,14 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 })
 export class ContactsPage {
 	public contactList: any;
-	public regUsersList: FirebaseListObservable<any>;
+	public groceryBuddiesList: FirebaseListObservable<any>;
 
   	constructor(public navCtrl: NavController, 
   		public navParams: NavParams, 
   		public af: AngularFireDatabase) {
 
-  		this.regUsersList = af.list('/registeredUsers');
-  		
-	    // af.list('/registeredUsers', { preserveSnapshot: true})
-    	// 	.subscribe(snapshots=>{
-	    //     snapshots.forEach(snapshot => {
-	    //       console.log(snapshot.key, snapshot.val());
-	    //     });
-	    // });
+  		this.groceryBuddiesList= af.list('/groceryBuddiesList');
+
 	  	var opts = {   
 	     // filter : "M",                                
 	      multiple: true,        
@@ -37,21 +33,56 @@ export class ContactsPage {
 	    };
 	    Contacts.find([ 'displayName', 'name' ],opts).then((contacts) => {
 	      this.contactList = contacts;
-	      this.contactList.forEach((contact)=>{
-
-	      	var str = contact.phoneNumbers[0].value;
-	      	str = str.substring(str.length-10);
-	      });
-	      console.log(contacts);
-	      
-	      //this.showRegisteredUsersFromContacts();
+	      this.showRegisteredUsersFromContacts();
 	    }, (error) => {
 	      console.log("Could not find contacts",error);
 	    });
   	}
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ContactsPage');
-  }
+  	ionViewDidLoad() {
+    	//console.log('ionViewDidLoad ContactsPage');
+  	}
+
+  //show users already registered in contacts with an icon
+  	showRegisteredUsersFromContacts() {
+  		var usersRef = firebase.database().ref('registeredUsers');  
+  		this.contactList.forEach((contact) => {
+      		contact.phoneNumbers.forEach((phone) => {
+  				var str = phone.value.replace(/\s/g,'');
+  				str = str.substring(str.length-10);
+  				usersRef.orderByChild("phone").equalTo(str).once('value', function(snapshot) {
+			        const userData = snapshot.val();
+			        if (userData) {
+			          	contact['showIcon'] = true;
+			          	Object.keys(userData).forEach(function(key) {
+					        console.log(key, userData[key]);
+					        contact['uid'] = userData[key].uid;
+					    });
+			          	
+			        } else {
+			        	contact['showIcon'] = false;
+			        }
+			    });
+  			})
+  		})
+  		
+  	}
+
+  	inviteGroceryBuddies(contact) {
+  		var self = this;
+  		var usersRef = firebase.database().ref('groceryBuddiesList'); 
+  		usersRef.orderByChild("buddyUID").equalTo(contact.uid).once('value', function(snapshot) {
+			        const userData = snapshot.val();
+			        if (userData && userData.userUID == firebase.auth().currentUser.uid) {
+			          	//contact
+			        } else {
+			        	//add to grocery buddies list mapping if buddy does not exists
+			          	self.groceryBuddiesList.push({
+			          		userUID: firebase.auth().currentUser.uid,
+			          		buddyUID: contact.uid
+			          	})
+			        }
+			    }); 
+  	}
 
 }
