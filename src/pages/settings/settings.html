@@ -1,14 +1,38 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      InScanOut- Settings
+      <h3>Account Settings</h3>
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
   <ion-item>
-    <ion-label>Account Settings</ion-label>
-    <ion-radio value="Stay logged In?" checked="true"></ion-radio>
+    <ion-label>Stay logged in?</ion-label>
+    <ion-toggle [(ngModel)]="isLoggedIn" checked="isLoggedIn"></ion-toggle>
   </ion-item>
+  <br/>
+  <button ion-button *ngIf="!isLoggedIn" color="dark" (click)="signOut()">Logout</button>
+ 
+  <!-- <ion-item> -->
+    <!-- <ion-searchbar #searcBar id="searchBar"
+	  [(ngModel)]="searchAddress"
+	  [showCancelButton]="shouldShowCancel"
+	  (ionInput)="searchLocation($event)"
+	  (ionCancel)="onCancel($event)">Search location
+	</ion-searchbar> -->
+	
+	<!-- <div #map id="map"></div>   -->
+	
+
+	  <!-- <ion-list>
+	    <span *ngFor="let contact of contactlist" >
+	      <ion-item *ngIf="contact.displayName">
+	          {{contact.displayName}} = {{contact.phoneNumbers[0].value}}
+	          <ion-icon [hidden]="contact.showIcon" name="logo-apple"></ion-icon>
+	      </ion-item>
+	    </span>
+	  </ion-list> -->
+	
+  <!-- </ion-item> -->
 </ion-content>

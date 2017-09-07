@@ -31,6 +31,7 @@ export class SignupPage {
       phone: ['', Validators.compose([Validators.required, Validators.pattern('^[\+0-9]{10,12}$')])]
     });
     this.registeredUserProfiles = af.list('/registeredUsers');
+   
   }
 
   /**
@@ -49,8 +50,8 @@ export class SignupPage {
       this.loading.present();
 
       this.authData.signupUser(this.signupForm.value.email, this.signupForm.value.password)
-      .then(() => {
-        //this.registeredUserProfiles = af.database.list('/registeredUsers');
+      .then((success) => {
+        
         this.loading.dismiss().then( () => {
           var successMessage: string = "User added successfully";
           var alert = this.alertCtrl.create({
@@ -65,7 +66,8 @@ export class SignupPage {
           alert.present();
           this.registeredUserProfiles.push({
             email: this.signupForm.value.email,
-            phone: this.signupForm.value.phone
+            phone: this.signupForm.value.phone,
+            uid: success.uid
           });
           this.nav.setRoot(HomePage); //ReviewView issue
         });

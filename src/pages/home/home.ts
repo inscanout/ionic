@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
+import { SettingsPage } from '../settings/settings';
+import { ContactsPage } from '../contacts/contacts';
 
 @Component({
   selector: 'page-home',
@@ -9,8 +11,23 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
-    
+  tab1Root: any;
+  tab2Root: any;
+  private rootPage;
+  private contactsPage;
+  private settingsPage;
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    // this.tab1Root = SettingsPage;
+    // this.tab2Root = ContactsPage;
+
+    this.contactsPage = ContactsPage;
+    this.settingsPage = SettingsPage;
+  }
+
+  openPage(p) {
+    this.rootPage = p;
   }
 
 }
