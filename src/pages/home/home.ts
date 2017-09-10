@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { SettingsPage } from '../settings/settings';
 import { ContactsPage } from '../contacts/contacts';
+import { StoresPage } from '../stores/stores';
 
 @Component({
   selector: 'page-home',
@@ -16,14 +17,14 @@ export class HomePage {
   private rootPage;
   private contactsPage;
   private settingsPage;
+  private storesPage;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    // this.tab1Root = SettingsPage;
-    // this.tab2Root = ContactsPage;
 
     this.contactsPage = ContactsPage;
     this.settingsPage = SettingsPage;
+    this.storesPage = StoresPage;
   }
 
   openPage(p) {

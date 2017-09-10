@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { Geolocation } from 'ionic-native';
+import { Geolocation } from '@ionic-native/geolocation';
 import { Contacts } from 'ionic-native';
 
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -14,10 +14,12 @@ import { HomePage } from '../pages/home/home';
 import { SettingsPage } from '../pages/settings/settings';
 import { ContactsPage } from '../pages/contacts/contacts';
 import { LoginPage } from '../pages/login/login';
+import { StoresPage } from '../pages/stores/stores';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { Network } from '@ionic-native/network';
 import { ConnectivityServiceProvider } from '../providers/connectivity-service/connectivity-service'; 
 
 const firebaseConfig = {
@@ -34,7 +36,8 @@ const firebaseConfig = {
     HomePage,
     LoginPage,
     SettingsPage,
-    ContactsPage
+    ContactsPage,
+    StoresPage
 
   ],
   imports: [
@@ -50,7 +53,8 @@ const firebaseConfig = {
     HomePage,
     LoginPage,
     SettingsPage,
-    ContactsPage
+    ContactsPage,
+    StoresPage
     
   ],
   providers: [
@@ -62,7 +66,8 @@ const firebaseConfig = {
     Facebook, 
     ConnectivityServiceProvider,
     Geolocation,
-    Contacts
+    Contacts,
+    Network
   ]
 })
 export class AppModule {}
