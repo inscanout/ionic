@@ -75,12 +75,18 @@ export class ContactsPage {
 			        const userData = snapshot.val();
 			        if (userData && userData.userUID == firebase.auth().currentUser.uid) {
 			          	//contact
+			          	
 			        } else {
 			        	//add to grocery buddies list mapping if buddy does not exists
 			          	self.groceryBuddiesList.push({
 			          		userUID: firebase.auth().currentUser.uid,
 			          		buddyUID: contact.uid
-			          	})
+			          	});
+			          	contact['showIcon'] = false;
+			          	var cntFiltered = self.contactList.filter((cont)=> {
+			          		return contact.uid == cont.uid;
+			          	})[0];
+			          	cntFiltered.showIcon = false;
 			        }
 			    }); 
   	}
