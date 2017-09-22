@@ -29,7 +29,7 @@ export class SettingsPage {
   		else{
   			firebase.auth().signOut().then(function() {
 			  // Sign-out successful.
-			  let alert = this.alertCtrl.create({
+			  let alert = self.alertCtrl.create({
           message: "Successfully signed out",
           buttons: [
             {

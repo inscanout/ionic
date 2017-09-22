@@ -15,6 +15,8 @@ import { SettingsPage } from '../pages/settings/settings';
 import { ContactsPage } from '../pages/contacts/contacts';
 import { LoginPage } from '../pages/login/login';
 import { StoresPage } from '../pages/stores/stores';
+import { PreferredStoresPage } from '../pages/preferred-stores/preferred-stores';
+import { BuddiesPage } from '../pages/buddies/buddies';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -37,7 +39,9 @@ const firebaseConfig = {
     LoginPage,
     SettingsPage,
     ContactsPage,
-    StoresPage
+    StoresPage,
+    PreferredStoresPage,
+    BuddiesPage
 
   ],
   imports: [
@@ -54,7 +58,9 @@ const firebaseConfig = {
     LoginPage,
     SettingsPage,
     ContactsPage,
-    StoresPage
+    StoresPage,
+    PreferredStoresPage,
+    BuddiesPage
     
   ],
   providers: [

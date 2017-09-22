@@ -196,7 +196,12 @@ export class StoresPage {
   	}
 
   	getStores(latLng) {
-	    var service = new google.maps.places.PlacesService(this.map);
+  		if(this.map !== undefined){
+  			 var service = new google.maps.places.PlacesService(this.map);
+  		}
+	   	else{
+	   		 var service = new google.maps.places.PlacesService(document.createElement('div'));
+	   	}
 	    let request = {
 	        location : latLng,
 	        radius : 2000 ,//in metres
@@ -246,7 +251,7 @@ export class StoresPage {
 		    animation: google.maps.Animation.DROP,
 		    position: place.geometry.location
 	    }); 
-	    console.log(place);
+	    
 	    let content = "<p>"+place.name+"</p>";          
 	    let infoWindow = new google.maps.InfoWindow({
 	    	content: content
@@ -254,6 +259,7 @@ export class StoresPage {
 
 	    google.maps.event.addListener(marker, 'click', () => {
 	    	infoWindow.open(this.map, marker);
+	    	this.addItemToPreferredStorelist(place);
 	    });  
 	} 
 
@@ -302,8 +308,12 @@ export class StoresPage {
 	addItemToPreferredStorelist(item) {
 		var self = this;
 		if(item.place_id && item.place_id !== ""){
-
-			var service = new google.maps.places.PlacesService(this.map);
+			if(this.map === undefined){
+				var service = new google.maps.places.PlacesService(this.map);
+			}else{
+				var service = new google.maps.places.PlacesService(document.createElement('div'));
+			}
+			
 			service.getDetails({
 	          placeId: item.place_id
 	        }, function(place, status) {
@@ -312,10 +322,8 @@ export class StoresPage {
 		  		usersRef.orderByChild("uid").equalTo(firebase.auth().currentUser.uid).once('value', function(snapshot) {
 			        const userData = snapshot.val();
 			        if (userData) {
-			          	console.log(userData);
 			          	var isStorexists: boolean = false;
 			          	Object.keys(userData).forEach(function(key) {
-					        console.log(key, userData[key]);
 					        if(userData[key].latitude === place.geometry.location.lat() && 
 					        	userData[key].longitude === place.geometry.location.lng()){
 					        	isStorexists = true;
@@ -343,6 +351,7 @@ export class StoresPage {
 							longitude: place.geometry.location.lng(),
 							uid: firebase.auth().currentUser.uid
 						});
+						alert("Successfully added to preferred stores list");
 						self.dismiss();
 						self.autocompleteItems = [];
 			        }

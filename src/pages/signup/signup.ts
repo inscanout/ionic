@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthProvider } from '../../providers/auth/auth';
 import { HomePage } from '../home/home';
 import { EmailValidator } from '../../validators/email';
+
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @IonicPage()
@@ -28,22 +29,16 @@ export class SignupPage {
     this.signupForm = formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
       password: ['', Validators.compose([Validators.minLength(6), Validators.required])],
-      phone: ['', Validators.compose([Validators.required, Validators.pattern('^[\+0-9]{10,12}$')])]
+      phone: ['', Validators.compose([Validators.required, Validators.pattern('^[\+0-9]{10,12}$')])],
+      confirmPassword: ['', Validators.compose([Validators.required]), this.matchingPasswords('password', 'confirmPassword')]
     });
     this.registeredUserProfiles = af.list('/registeredUsers');
    
   }
 
-  /**
-   * If the form is valid it will call the AuthData service to sign the user up password displaying a loading
-   *  component while the user waits.
-   *
-   * If the form is invalid it will just log the form value, feel free to handle that as you like.
-   */
   signupUser(){
-    if (!this.signupForm.valid){
-      console.log(this.signupForm.value);
-    } else {
+    
+    if(this.signupForm.valid){
       this.loading = this.loadingCtrl.create({
           dismissOnPageChange: true,
         });
@@ -88,9 +83,18 @@ export class SignupPage {
           alert.present();
         });
       });
-
-      
-
     }
   }
+
+  matchingPasswords(passwordKey: string, confirmPasswordKey: string) {
+    // TODO maybe use this https://github.com/yuyang041060120/ng2-validation#notequalto-1
+    (group: FormGroup): {[key: string]: any} => {
+      let password = group.root['controls'][passwordKey];
+      let confirmPassword = group.root['controls'][confirmPasswordKey];
+
+      return password.value === confirmPassword.value ? null : { notValid: true };
+    }
+  }
+
+  
 }

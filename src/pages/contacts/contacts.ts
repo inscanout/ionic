@@ -80,13 +80,16 @@ export class ContactsPage {
 			        	//add to grocery buddies list mapping if buddy does not exists
 			          	self.groceryBuddiesList.push({
 			          		userUID: firebase.auth().currentUser.uid,
-			          		buddyUID: contact.uid
+			          		buddyUID: contact.uid,
+			          		buddyName: contact.displayName
+			          		//phNum: contact.phNum
 			          	});
 			          	contact['showIcon'] = false;
 			          	var cntFiltered = self.contactList.filter((cont)=> {
 			          		return contact.uid == cont.uid;
 			          	})[0];
 			          	cntFiltered.showIcon = false;
+			          	alert("Contact added to the list of grocery buddies");
 			        }
 			    }); 
   	}
