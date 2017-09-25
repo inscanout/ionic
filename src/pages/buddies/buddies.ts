@@ -33,7 +33,7 @@ export class BuddiesPage {
   	//this.buddiesList = this.af.list('/groceryBuddiesList');
 	var self = this;
   	var usersRef = firebase.database().ref('groceryBuddiesList'); 
-  		usersRef.orderByChild("uid").equalTo(firebase.auth().currentUser.uid).once('value', function(snapshot) {
+  		usersRef.orderByChild("userUID").equalTo(firebase.auth().currentUser.uid).once('value', function(snapshot) {
 	        const userData = snapshot.val();
 	        if (userData) {
 	          	self.buddiesList =userData;

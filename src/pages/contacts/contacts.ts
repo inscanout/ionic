@@ -18,12 +18,14 @@ import firebase from 'firebase';
 export class ContactsPage {
 	public contactList: any;
 	public groceryBuddiesList: FirebaseListObservable<any>;
+	public invitation: FirebaseListObservable<any>;
 
   	constructor(public navCtrl: NavController, 
   		public navParams: NavParams, 
   		public af: AngularFireDatabase) {
 
   		this.groceryBuddiesList= af.list('/groceryBuddiesList');
+  		this.invitation= af.list('/invitation');
 
 	  	var opts = {   
 	     // filter : "M",                                
@@ -41,6 +43,16 @@ export class ContactsPage {
 
   	ionViewDidLoad() {
     	//console.log('ionViewDidLoad ContactsPage');
+  	}
+  	sendInvitation(contact) {
+  		this.invitation.push({
+  			userName: firebase.auth().currentUser.displayName,
+  			userUID: firebase.auth().currentUser.uid,
+  			buddyUID: contact.uid,
+			buddyName: contact.displayName
+  		});
+
+
   	}
 
   //show users already registered in contacts with an icon
@@ -61,6 +73,7 @@ export class ContactsPage {
 			          	
 			        } else {
 			        	contact['showIcon'] = false;
+			        	contact['isBuddy']= false;
 			        }
 			    });
   			})
