@@ -36,7 +36,14 @@ export class BuddiesPage {
   		usersRef.orderByChild("userUID").equalTo(firebase.auth().currentUser.uid).once('value', function(snapshot) {
 	        const userData = snapshot.val();
 	        if (userData) {
-	          	self.buddiesList =userData;
+	          	//self.buddiesList =userData;
+	          	Object.keys(userData).forEach(function(key) {
+					        console.log(key, userData[key]);
+					        this.buddiesList.push({
+					        	buddyName: userData[key].buddyName,
+					        	buddyPhone: userData[key].buddyPhone
+					        })
+					    });
 	        } else {
 				let alert = self.alertCtrl.create({
 		          message: "Please add a grocery buddy",

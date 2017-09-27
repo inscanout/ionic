@@ -58,6 +58,7 @@ export class ContactsPage {
   //show users already registered in contacts with an icon
   	showRegisteredUsersFromContacts() {
   		var usersRef = firebase.database().ref('registeredUsers');  
+  		var buddyRef = firebase.database().ref('groceryBuddies');  
   		this.contactList.forEach((contact) => {
       		contact.phoneNumbers.forEach((phone) => {
   				var str = phone.value.replace(/\s/g,'');
@@ -65,15 +66,21 @@ export class ContactsPage {
   				usersRef.orderByChild("phone").equalTo(str).once('value', function(snapshot) {
 			        const userData = snapshot.val();
 			        if (userData) {
-			          	contact['showIcon'] = true;
+			          	contact['IsRegisteredUser'] = true;
 			          	Object.keys(userData).forEach(function(key) {
-					        console.log(key, userData[key]);
+					        //console.log(key, userData[key]);
 					        contact['uid'] = userData[key].uid;
 					    });
+					    // buddyRef.orderByChild("userUID").equalTo(firebase.auth().currentUser.uid,).once('value', function(snapshot1) {
+					    // 	const buddyData = snapshot1.val();
+					    // 	if(buddyData){
+					    // 		alert("has ")
+					    // 	}
+					    // })
 			          	
 			        } else {
-			        	contact['showIcon'] = false;
-			        	contact['isBuddy']= false;
+			        	contact['IsRegisteredUser'] = false;
+			        	//contact['isBuddy']= false;
 			        }
 			    });
   			})
@@ -83,19 +90,28 @@ export class ContactsPage {
 
   	inviteGroceryBuddies(contact) {
   		var self = this;
-  		var usersRef = firebase.database().ref('groceryBuddiesList'); 
+  		var usersRef = firebase.database().ref('groceryBuddies'); 
   		usersRef.orderByChild("buddyUID").equalTo(contact.uid).once('value', function(snapshot) {
 			        const userData = snapshot.val();
 			        if (userData && userData.userUID == firebase.auth().currentUser.uid) {
 			          	//contact
+			          	Object.keys(userData).forEach(function(key) {
+					        console.log(key, userData[key]);
+					        if(userData[key].buddyUID && userData[key].)
+					        this.buddiesList.push({
+					        	buddyName: userData[key].buddyUIDbuddyName,
+					        	buddyPhone: userData[key].buddyPhone
+					        })
+					    });
 			          	
 			        } else {
 			        	//add to grocery buddies list mapping if buddy does not exists
 			          	self.groceryBuddiesList.push({
 			          		userUID: firebase.auth().currentUser.uid,
 			          		buddyUID: contact.uid,
-			          		buddyName: contact.displayName
-			          		//phNum: contact.phNum
+			          		buddyName: contact.displayName,
+			          		phone: contact.phoneNumbers[0].value,
+			          		IsBuddy: true
 			          	});
 			          	contact['showIcon'] = false;
 			          	var cntFiltered = self.contactList.filter((cont)=> {
