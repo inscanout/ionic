@@ -13,7 +13,7 @@
 	      <ion-item *ngIf="contact">
 	          {{contact.displayName}}
 	          <p padding *ngFor="let phNum of contact.phoneNumbers">{{phNum.value}}</p>
-	          <ion-icon [hidden]="!contact.IsRegisteredUser" (click)=inviteGroceryBuddies(contact) name="logo-apple"></ion-icon>
+	          <ion-icon [hidden]="!contact.IsRegisteredUser" name="logo-apple"></ion-icon>
 	          <br/>
 	          
 	      </ion-item>
